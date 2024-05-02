@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRENDING OFFER CARD4</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'poppins';
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 50px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 1200px;
+            margin-left: 40px;
+            height: auto;
+            font-family: 'poppins';
+          
+        }
+        .card-title {
+            font-size: 32px;
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .offer {
+            margin-bottom: 20px;
+           
+        }
+        .offer-heading {
+            font-size: 24px;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .offer-title {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 5px;
+            margin-top: 5px; /* Adjust the top margin */
+        }
+        .offer-point {
+            font-size: 18px;
+            color: #111111;
+            list-style-type: disc; /* Add dots to points */
+            padding-left: 20px; /* Adjust spacing between dot and text */
+            margin-top: 5px; /* Adjust the top margin */
+            margin-bottom: -15px; /* Adjust the bottom margin */
+        }
+        .card-title{
+            color: rgb(199, 8, 126);
+            font-weight: bold;
+        }
+        .offer-title{
+            color:brown;
+            font-size: 19px;
+            margin-top: 40px;
+            margin-left: 90px;
+        }
+        
+        .image{
+            margin-left: 100px;
+            margin-top: 20px;
+            width: 100px;
+            height: 250px;
+    
+        }
+        .offer-point {
+    font-size: 18px;
+    color: #111111;
+    list-style-type: disc; /* Add dots to points */
+    padding-left: 20px; /* Adjust spacing between dot and text */
+    margin-top: 5px; /* Adjust the top margin */
+    margin-bottom: -15px; /* Adjust the bottom margin */
+}
+
+.more-info-link {
+    display: inline-block;
+    padding: 10px 20px; 
+    background-color:green;
+    color: #fff; 
+    text-decoration: none;
+    border: none; 
+    border-radius: 5px;
+    transition: background-color 0.3s ease; 
+    margin-left: 550px;
+    position: absolute; 
+    margin-top: -10px;
+    
+    
+    
+}
+
+.more-info-link:hover {
+    background-color: #0056b3;
+    color: white;
+    text-decoration: none; /* Remove underline */
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="content" style="margin-left: -499px;">
+    <div class="container" style="margin-left: 30px;">
+        
+            {% for i in res8 %}
+            <div class="offer">
+                <div class="offer-heading" style="margin-left: 500px; font-weight: bold; font-size: 30px; font-family: 'poppins';">{{ i.heading }}</div>  
+                {% if i.image %}
+            <center><img src="{{ i.image }}" style="width: 1344px; margin-top: -50px; margin-bottom: -5px; height: 400px; margin-left: -50px;"></center>
+            {% endif %}    
+            </div>
+            <div class="offer-title" style="font-weight: bold; font-size: 25px; font-family: 'poppins'; margin-left: 450px; margin-bottom: 20px;">{{ i.title }}</div>
+            <a href="/bus_main/" class="more-info-link">Book Now</a><br><br><br><br>
+
+                {% endfor %}
+        
+
+
+
+        <div class="card" style="border-radius: 20px; height: 265px; margin-top: -40px;">
+            
+            {% for i in res9 %}
+            <div class="offer">
+                <div class="offer-heading" style="margin-left: -10px; font-weight: bold; font-size: 25px; font-family: 'poppins'; margin-top: -20px;">{{ i.heading }}</div> 
+                
+                <ul class="offer-title" style=" font-size: 20px; font-family: 'poppins'; color: #111111; margin-top: -10px; margin-left: -20px;">
+                    {% if i.title %}
+                    <li>{{ i.title }}</li>
+                    {% endif %}
+                </ul>
+                   
+            </div>
+            
+           
+
+            {% endfor %}
+        </div>
+
+        <div class="card" style="border-radius: 20px;  margin-top: 20px; height: 900px;">
+
+        {% for i in res10 %}
+            <div class="offer">
+                <div class="offer-heading" style="margin-left: -10px; font-weight: bold; font-size: 30px; font-family: 'poppins';">{{ i.heading }}</div>  
+                  
+            
+            
+                <ul class="offer-point" style="font-size: 20px; font-family: 'poppins';">
+                    {% if i.point %}
+                    <li>{{ i.point }}</li>
+                    {% endif %}
+                </ul>
+
+               
+            </div>
+            {% endfor %}
+        </div>
+
+
+
+
+
+
+        
+    </div>
+    
+    </div>
+   
+</body>
+</html><br><br>
+

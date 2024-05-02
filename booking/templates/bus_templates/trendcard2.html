@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRENDING OFFERS CARD 2</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <style>
+        /* General styles */
+       
+        .card {
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+       
+        .more-info-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: green;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-left: 40px;
+            position: relative;
+            margin-top: 40px;
+            margin-bottom: 30px;
+        }
+
+        .more-info-link:hover {
+            background-color: #0056b3;
+            color: white;
+            text-decoration: none; /* Remove underline */
+        }
+
+        .content1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center"> <!-- Added 'text-center' class here -->
+       
+            
+        {% for i in res20 %}
+        <div class="offer">  
+        <center><img src="{{ i.image }}" style=" width: 1206px; margin-top: -2px; height: 400px; margin-left: -10px;"></center>
+            
+        </div>
+        
+
+        {% endfor %}
+
+    </div>
+
+    <div class="content1">
+        <a href="/bus_main/" class="more-info-link">Book Now</a>
+    </div>
+
+    <div class="card">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+            {% for i in res6 %}
+            <div style="border: 1px solid #000; padding: 10px; margin: 10px; width: calc(20% - 10px); font-size: 18px; text-align: center; border-radius: 10px;">
+                <h2 style="font-size: 20px;">{{ i.heading }}</h2>
+                <p style="color:blue;">{{ i.title }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div><br><br>
+
+    <div class="card">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+            {% for i in res15 %}
+            <div style="border: 1px solid #000; padding: 10px; margin: 10px;  font-size: 18px; text-align: center; border-radius: 10px;">
+                <h2 style="font-size: 20px;">{{ i.heading }}</h2>
+                <p style="color:red;">{{ i.title }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div><br><br>
+
+    <h2 style="margin-left: 70px; color: rgb(199, 8, 126); font-size: 24px; font-family: 'poppins'; text-align: center;"><b>Travel Benefits:</b></h2>
+    <div class="card">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+            {% for i in res16 %}
+            <div style="border: 1px solid #000; padding: 10px; margin: 10px; width: calc(20% - 20px); font-size: 18px; align-items: center;">
+                <p style="color:black; margin-top: 20px;">{{ i.title }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div><br><br>
+
+    <div class="custom-container" style="margin-left: auto; margin-right: auto; width: 1200px;">
+        <div class="myaccordion" style="border-radius: 20px; ">
+
+
+            {% for i in res_cancel %}
+            
+            <div class="offer-title" style="font-size: 25px; font-family: 'poppins'; margin-top: -20px; color: rgb(199, 8, 126);"><b>{{ i.title }}</b></div>
+                <ul class="offer-point" style="font-size: 20px; font-family: 'poppins'; padding-bottom: 30px; margin-left: 20px;">
+                    {% if i.point %}
+                    <li>{{ i.point }}</li>
+                    {% endif %}
+                </ul>
+
+                {% endfor %}
+
+
+            
+            {% for i in res17 %}
+            
+            <div class="offer-title" style="font-size: 25px; font-family: 'poppins'; margin-top: -20px; color: rgb(199, 8, 126);"><b>{{ i.title }}</b></div>
+                <ul class="offer-point" style="font-size: 20px; font-family: 'poppins'; padding-bottom: 30px; margin-left: 20px;">
+                    {% if i.point1 %}
+                    <li>{{ i.point1 }}</li>
+                    {% endif %}
+                </ul>
+
+                {% endfor %}
+        </div>  
+    </div>
+
+
+
+
+    
+</div>
+    <script>
+        var faq = document.getElementsByTagName("label");
+        var i;
+        for (i = 0; i < faq.length; i++) {
+            faq[i].addEventListener("click", function () {
+                var body = this.nextElementSibling;
+                var isActive = this.classList.contains("active");
+
+                // Close all other open contents
+                var allContents = document.querySelectorAll('.content');
+                for (var j = 0; j < allContents.length; j++) {
+                    allContents[j].style.display = 'none';
+                }
+                // Remove 'active' class from all labels
+                var allLabels = document.querySelectorAll('label');
+                for (var k = 0; k < allLabels.length; k++) {
+                    allLabels[k].classList.remove('active');
+                }
+
+                // Toggle active class and display content
+                if (!isActive) {
+                    this.classList.add("active");
+                    body.style.display = "block";
+                } else {
+                    this.classList.remove("active");
+                    body.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>

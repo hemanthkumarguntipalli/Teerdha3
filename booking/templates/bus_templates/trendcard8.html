@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BUS OFFERS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <style>
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .offer-point {
+            list-style-type: disc;
+            margin-left: 25px;
+            padding-left: 15px;
+            color: #666;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        h6 {
+            font-weight: 400;
+            color: rgb(255, 0, 179);
+        }
+
+        h4 {
+            padding-left: 20px;
+            color: green;
+        }
+
+        .card-title {
+            font-size: 20px;
+            margin-left: 25px;
+            color: green;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .more-info-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: green;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        .more-info-link:hover {
+            background-color: #0056b3;
+            color: white;
+            text-decoration: none; /* Remove underline */
+        }
+
+        .container-form {
+            background-color: rgb(248, 233, 233);
+            max-width: 900px; /* Change to max-width */
+            width: 100%; /* Change to 100% */
+            border: 1px solid darkgoldenrod;
+            border-radius: 15px;
+            margin: 20px auto;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: left;
+        }
+
+        th, td {
+            text-align: center;
+            color: rgb(212, 29, 136);
+        }
+
+        th {
+            color: rgb(5, 168, 5);
+            background-color: rgb(233, 233, 231);
+        }
+
+        h3 {
+            color: darkmagenta;
+        }
+
+        .card-image img {
+            max-width: 100%; /* Change to max-width */
+            height: auto;
+        }
+
+        .table-wrapper {
+            width: 90%;
+            margin: 0 auto;
+            justify-content: center;
+        }
+
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="content-wrapper">
+    <div class="content">
+    <div>
+        {% for i in res8 %}
+            <div class="card-image">
+                {% if i.image %}
+                    <img src="{{ i.image }}" style="width: 1364px;height: 400px;">
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div><br>
+</div>
+
+
+    <div>
+        {% for i in res8 %}
+            <h3>{{i.heading}}</h3>
+        {% endfor %}
+    </div>
+
+    <div class="table-wrapper d-flex justify-content-center text-align-center">
+        <table border="1" style=" border: 1px solid rgb(243, 183, 127); font-weight: bold;">
+            {% for i in res8 %}
+                {% if i.heading1 and i.heading2 %}
+                    <tr>
+                        <th>{{i.heading1}}</th>
+                        <th>{{i.heading2}}</th>
+                    </tr>
+                {% endif %}
+    
+                {% if i.offer and i.promocode %}
+                    <tr>
+                        <td>{{i.offer}}</td>
+                        <td>{{i.promocode}}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+    </div><br><br>
+
+    <div class="container-form">
+        {% for i in res8 %}
+            <h5 class="card-title">{{ i.title }}</h5>
+            <ul class="offer-point">
+                {% if i.point %}
+                    <li>{{ i.point }}</li>
+                {% endif %}
+            </ul>
+        {% endfor %}
+    </div>
+<div class="content">
+    <a href="/bus_main/" class="more-info-link">Book Now</a>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,578 @@
+{% extends 'base.html' %}
+{% block flight %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teerdha Bus Search & Trending Offers</title>
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <style>
+     
+    
+
+
+    /* Custom styles for the bus search form */
+        .bus-search-form {
+    width: 100%; /* Adjust width using percentages */
+    max-width: 800px; /* Limit maximum width */
+    margin: 20px auto; /* Center align content */
+}
+       
+
+        .bus-search-form h1 {
+            color: #b32f07;
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-family: 'poppins';
+          
+           
+        }
+
+        .search-inputs {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .search-inputs label {
+            font-size: 18px;
+            color: #333; /* Changed color */
+        }
+
+        .search-inputs input[type="text"],
+        .search-inputs input[type="date"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+            font-size: 16px;
+            outline: none;
+            flex-grow: 1;
+        }
+
+        .search-inputs button {
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #dc3545; /* Changed color */
+            color: #fff;
+            /* margin-top: 10px; */
+            display: block; /* Moves the button to a new line */
+           
+          
+            
+        }
+
+        .search-inputs button:hover {
+            background-color: #c82333; /* Changed hover color */
+        }
+
+        .arrow-button {
+            font-size: 24px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.3s ease;
+            padding: 10px 15px; /* Adjusted padding */
+            border-radius: 50%; /* Rounded button */
+        }
+
+        .arrow-button:hover {
+            background-color: #0056b3;
+        }
+
+        .arrow-button.rotate {
+            transform: rotate(180deg);
+        }
+
+        .container {
+            background: rgb(255,246,230);
+            background: linear-gradient(0deg, rgba(255,246,230,1) 50%, rgba(255,221,214,1) 70%);
+            border-radius: 20px;
+           padding: 10px;
+}
+
+        /* Bus icons */
+        .bus-icon {
+            color: #007bff;
+            margin-right: 5px;
+            font-size: 20px;
+        }
+
+        .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: auto; /* Adjusted margin-left */
+    margin-right: auto; /* Adjusted margin-right */
+    width: 90%; /* Adjusted width */
+}
+
+.search-container button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #dc3545;
+    color: #fff;
+    margin-top: 10px;
+    display: block;
+    width: 100%; /* Adjusted width */
+    
+}
+.search {
+    margin-top: 10px;
+    margin-left: auto; /* Aligns to the right */
+    margin-right: auto; /* Aligns to the left */
+    justify-content: center; /* Centers horizontally */
+}
+
+
+
+         /* Trending Offers Styles */
+    
+   
+    .cards-container {
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch; 
+    }
+    
+    .card {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    height: 190px;
+    display: inline-block;
+    vertical-align: top;
+    width: 400px; /* Set a fixed width for the cards */
+    margin-right: 20px; /* Add some margin between cards */
+}
+
+    
+    .card-content {
+        display: flex;
+        align-items: center;
+    }
+    
+    .card img {
+        width: 200px;
+        height: 200px; 
+        margin-right: -10px;
+        margin-top: -18px;
+    }
+
+    .offer-details {
+        padding: 20px;
+    }
+    
+    .offer-details h3 {
+        margin-top: 0;
+    }
+    
+    .offer-details p {
+        margin: 5px 0;
+        font-size: 14px;
+    }
+    
+    
+   
+
+    .offer-details .coupon-code {
+        display: inline-block;
+        padding: 5px 10px;
+        background-color: #f2f2f2;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+        margin-top: 10px;
+        color: #007bff;
+    }
+
+    .offer-details .coupon-code span {
+        font-weight: bold;
+    }
+
+    button a {
+        text-decoration: none;
+    }
+
+    .trending-offers-container {
+       
+        width: 1348px;
+        position: relative; /* Ensure relative positioning for absolute positioning of buttons */
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        /* background-color: #75ac97; */
+        height: auto;
+    
+        
+    }
+    
+
+    
+    h3 {
+        font-size: 18px;
+    } 
+    .swiper-wrapper1 {
+        display: flex;
+        justify-content: center;
+        
+    } 
+    
+    
+
+
+
+    
+    
+       /* why choose us*/
+    .box {
+    padding: 10px;
+    width: 1050px; /* Adjust width using percentages */
+    max-width: 1000px; /* Limit maximum width */
+    margin: 30px auto; /* Center align content */
+    box-shadow: 3px 3px 3px green;
+    background-color: lightgoldenrodyellow;
+    border-radius: 20px;
+}
+h4 {
+    font-family: 'poppins';
+    margin: 20px auto; /* Center align content */
+  
+    color: #b32f07;
+    border-radius: 10px;
+    text-align: center;
+}
+    h5{
+        font-family: 'poppins';
+       
+        color: darkred;
+        
+    }
+    p{
+        width: 100%;
+        opacity: 85%;
+        font-family:'poppins';   
+    }
+    .box:hover{
+        background-color: lightgrey;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+   
+
+       /* faq of teerdha */
+
+       .faq {
+    width: 100%;
+    max-width: 1000px; /* Adjust maximum width as needed */
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#myaccordion {
+    max-width: 1000px; /* Adjust maximum width as needed */
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.hidecontent {
+    display: none;
+}
+
+#myaccordion label {
+    box-shadow: 0 0 20px #d4d4d4;
+    display: block;
+    padding: 8px 22px;
+    margin: 20px 0px 1px 0px;
+    cursor: pointer;
+    background-color: rgb(244, 189, 167);
+    color: black;
+    transition: ease .5s;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: 'poppins';
+    width: 100%; /* Adjust width to fill its container */
+}
+
+#myaccordion label:hover {
+    background-color: rgb(248, 221, 210);
+}
+
+.content {
+    box-shadow: 0 0 20px #d4d4d4;
+    background: #ffff;
+    padding: 10px 25px;
+    border: 1px solid #d4d4d4;
+    margin: -1 0 0 0;
+    border-radius: 10px;
+    width: 100%; /* Adjust width to fill its container */
+    font-family: 'poppins';
+}
+
+#myaccordion input:checked+label+.content {
+    display: block;
+    -moz-animation: fadeIn 0.5s ease-out;
+    -o-animation: fadeIn 0.5s ease-out;
+    animation: fadeIn 0.5s ease-out;
+    font-family: 'poppins';
+}
+
+/* body {
+    padding-top: 30px;
+    padding-bottom: 50px;
+    padding-right: 5%;
+    padding-left: 5%;
+    background-color: #fff;
+} */
+
+h1 {
+    color: #b32f07;
+    text-align: center;
+    margin-bottom: -10px;
+    font-size: 24px;
+    
+   
+}
+
+#myaccordion label.active::before {
+    content: "\25BC";
+    color: maroon;
+    font-size: 15px;
+}
+
+#myaccordion label::before {
+    content: '\25B6';
+    font-size: 15px;
+    color: maroon;
+    float: right;
+    margin-left: 5px;
+    font-family: 'poppins';
+}
+
+  
+  
+p{
+    font-family: 'poppins';
+}
+.content-wrapper {
+    justify-content: center;
+    max-width: 1000px; /* Limit maximum width */
+    margin: 0 auto; /* Center align content */
+}
+
+
+
+
+
+
+</style>
+</head>
+<body><br><br>
+
+<div class="content-wrapper">
+<!-- Bus Search Form -->
+<div class="container">
+<div class="bus-search-form"><br>
+    <center><h1><b>Teerdha Online Bus Ticket Booking Site</b></h1></center><br>
+        <div class="search-inputs">
+            <i class="bus-icon from fas fa-bus"></i>
+            <input id="fromInput" type="text" placeholder="From">
+            <div class="arrow-buttons">
+                <button id="arrowButton" class="arrow-button" onclick="swapDetails()">&larr;</button>
+            </div>&nbsp;&nbsp;
+            <i class="bus-icon to fas fa-bus"></i>
+            <input id="toInput" type="text" placeholder="To">
+            <i class="bus-icon from fas fa-bus"></i>
+            <input type="date">
+            <div class="search buses text-center mb-2 mt-4">
+                <button onclick="searchBuses()">Search Buses</button>
+            </div>
+        </div>
+</div>
+</div>
+</div><br><br><br>
+
+<div class="swiper-wrapper1">
+<!-- Trending Offers -->
+<div class="trending-offers-container">
+    <center><h2 style="color: #b32f07; font-size: 25px; font-family: 'poppins';"><b>Trending Offers</b></h2></center><br>
+    
+        
+            <div class="swiper-wrapper cards-container">
+                {% for i in res %}
+                    <div class="swiper-slide card" style="border-radius: 20px; width: 450px;">
+                        <a class="text-decoration-none text-secondary" href="{{i.Link}}"> 
+                        <div class="card-content">
+                            {% if i.image %}
+                                <img src="{{ i.image }}" style="margin-top: -2px;">
+                            {% endif %}   
+                            <div class="offer-details">
+                                <h3 style="width: 20px; font-size: 18px;">{{ i.heading }}</h3>
+                                <p>{{ i.title }}</p>
+                                <p>{{ i.discount }}</p>
+                                <p>{{ i.valid }}</p>
+                            
+                                <p><span class="coupon-code">{{ i.code }}</span></p>
+                                
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        
+
+        <!-- Navigation Buttons -->
+       <div class="swiper-button-next text-danger" style="margin-top: 10px;"></div>
+        <div class="swiper-button-prev text-danger" style="margin-top: 10px;"></div>
+    
+</div>
+</div><br><br><br>
+
+<!-- Why Choose Us -->
+<h4 style="font-size: 25px; font-weight: bold; font-family: 'poppins';"><b>Why Choose us ?</b></h4>
+    {% for i in k2 %}   
+        <div class="box">
+            <h5 style="font-size: 21px;">{{i.title}}</h5>
+            <p style="font-size: 18px;">{{i.content}}</p>
+            {% if i.image1 %}
+    <img class="Image" src="{{ i.image1.url }}">
+{% endif %}
+
+{% if i.image2 %}
+<img class="Image" src="{{ i.image2.url }}">
+{% endif %}
+
+{% if i.image3 %}
+<img class="Image" src="{{ i.image3.url }}">
+{% endif %}
+
+{% if i.image4 %}
+<img class="Image" src="{{ i.image4.url }}">
+{% endif %}
+
+{% if i.image5 %}
+<img class="Image" src="{{ i.image5.url }}">
+{% endif %}
+
+        </div> 
+    {% endfor %}<br><br>
+
+<!-- FAQs -->
+<div class="faq">
+<h1 style="font-family: 'poppins';"><center><b>Online Bus Booking FAQ’s</b></center></h1>
+    <div id="myaccordion">
+        {% for i in k1 %}
+        <input type="checkbox" id="accordion1" class="hidecontent"/>
+        <label class="accordion1">{{ i.description1 }}</label>
+                       
+        
+    
+        <div class="content hidecontent">
+            <p class="card-text">{{ i.description2 }}</p>
+        </div>
+        {% endfor %}
+       
+    </div>
+</div>
+<!-- JavaScript -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    // Bus Search Form Script
+    function swapDetails() {
+        var fromValue = document.getElementById("fromInput").value;
+        var toValue = document.getElementById("toInput").value;
+        document.getElementById("fromInput").value = toValue;
+        document.getElementById("toInput").value = fromValue;
+        document.getElementById("arrowButton").classList.toggle("rotate");
+    }
+
+    function searchBuses() {
+        // Your bus search functionality here
+        // window.location.href = window.location.href;
+    }
+
+   
+</script>
+<!-- JavaScript -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+   
+
+    // Trending Offers Swiper Script
+    var swiper = new Swiper('.trending-offers-container', {
+        slidesPerView: 3,
+        spaceBetween: 20,
+        loop:true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+    });
+</script>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<!-- Your custom JavaScript here -->
+<script>
+        var faq = document.getElementsByTagName("label");
+        var i;
+        for (i = 0; i < faq.length; i++) {
+            faq[i].addEventListener("click", function () {
+                var body = this.nextElementSibling;
+                var isActive = this.classList.contains("active");
+                
+                // Close all other open contents
+                var allContents = document.querySelectorAll('.content');
+                for (var j = 0; j < allContents.length; j++) {
+                    allContents[j].style.display = 'none';
+                }
+                // Remove 'active' class from all labels
+                var allLabels = document.querySelectorAll('label');
+                for (var k = 0; k < allLabels.length; k++) {
+                    allLabels[k].classList.remove('active');
+                }
+    
+                // Toggle active class and display content
+                if (!isActive) {
+                    this.classList.add("active");
+                    body.style.display = "block";
+                } else {
+                    this.classList.remove("active");
+                    body.style.display = "none";
+                }
+            });
+        }
+    </script>
+</script>
+
+
+</body>
+</html>
+
+{% endblock %}

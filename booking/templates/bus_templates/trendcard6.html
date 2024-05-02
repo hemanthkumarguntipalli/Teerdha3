@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>photo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f2f2f2;
+    }
+    h1 {
+      text-align: center;
+      color: rgb(241, 81, 81);
+      font-size: 40px;
+    }
+    .route-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .route-card {
+      width: 230px;
+      background-color: #fff;
+      border-radius: 10px;
+      margin: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .route-image {
+      width: 1339px;
+      height: 400px;
+      margin-bottom: -90px;
+      margin-top: -50px;
+      margin-left: -550px;
+    }
+    
+    /* Custom feature card styles */
+    .feature-container {
+      display: flex;
+      justify-content: center;
+    }
+    .feature-card-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap; /* Ensure cards wrap to the next line */
+      width: 100%; /* Set the width to 100% */
+    }
+    .feature-card {
+      width: calc(20% - 20px); /* Adjust the width as needed */
+      /* 20% width with 20px margin on both sides */
+      background-color: #ddd7ff; /* Default background color */
+      border-radius: 10px;
+      margin: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .feature-image {
+      width: 70px;
+      height: auto;
+      border-radius: 10px;
+      display: block;
+      margin: 0 auto; /* Center the image horizontally */
+    }
+    .feature-title {
+      font-size: 20px;
+      font-weight: bold;
+      padding: 5px;
+      text-align: center;
+      color: #ff0000; /* Custom title color */
+    }
+   
+    /* 2nd card */
+
+    body {
+            font-family: 'poppins';
+            background-color: #f8f9fa;
+        
+            justify-content: center;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            
+           
+        }
+        .card-title {
+            font-size: 32px;
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .offer {
+            margin-bottom: 20px;
+        }
+        .offer-heading {
+            font-size: 24px;
+            color: #007bff;
+            margin-bottom: 40px;
+        }
+        .offer-title {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 15px;
+            margin-top: 5px; /* Adjust the top margin */
+        }
+        .offer-point {
+            font-size: 18px;
+            color: #111111;
+            list-style-type: disc; /* Add dots to points */
+            padding-left: 20px; /* Adjust spacing between dot and text */
+            margin-top: 5px; /* Adjust the top margin */
+            margin-bottom: -15px; /* Adjust the bottom margin */
+        }
+        .card-title{
+            color: rgb(7, 155, 135);
+            font-weight: bold;
+        }
+        .offer-title{
+            color:rgb(145, 80, 6);
+            font-weight: bold;
+        }
+
+        .more-info-link {
+    display: inline-block;
+    padding: 10px 20px; 
+    background-color:green;
+    color: #fff; 
+    text-decoration: none;
+    border: none; 
+    border-radius: 5px;
+    transition: background-color 0.3s ease; 
+    margin-left: 420px;
+    position: absolute; 
+    margin-top: -70px;
+    margin-bottom: 20px;
+}
+
+.more-info-link:hover {
+    background-color: #0056b3;
+    color: white;
+    text-decoration: none; /* Remove underline */
+}
+.content-wrapper {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+    
+</style>
+</head>
+<body>
+  <div class="content-wrapper">
+    {% for i in res1 %}
+    <div class="route-card">
+      <img class="route-image" src="{{ i.image }}">
+      
+    </div>
+    {% endfor %}
+  
+  </div>
+  
+  
+    <div class="container">
+      <a href="/bus_main/" class="more-info-link">Book Now</a>
+        <div class="card" style="margin-top: 170px; background-color: rgb(209, 235, 194);">
+            <h1 class="card-title">Mega Deals on Bus Booking!</h1>
+            {% for i in res %}
+            <div class="offer">
+                <div class="offer-heading">{{ i.heading }}</div>
+                <div class="offer-title">{{ i.title }}</div>
+                <ul class="offer-point">
+                    {% if i.point %}
+                    <li>{{ i.point }}</li>
+                    {% endif %}
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+  
+
+
+  
+</body>
+</html><br><br>
+
+
